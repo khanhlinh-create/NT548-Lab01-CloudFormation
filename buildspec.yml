@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - pip install cfn-lint
+      - pip install taskcat
+
+  build:
+    commands:
+      - echo "Running cfn-lint..."
+      - cfn-lint network/*.yaml
+      - cfn-lint security/*.yaml
+      - cfn-lint compute/*.yaml
+
+artifacts:
+  files:
+    - '**/*'
