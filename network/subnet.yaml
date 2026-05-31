@@ -13,7 +13,6 @@ Resources:
     Properties:
       VpcId: !Ref VpcId
       CidrBlock: 10.0.1.0/24
-
       MapPublicIpOnLaunch: true
 
       Tags:
