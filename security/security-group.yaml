@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+
+  VpcId:
+    Type: String
+
+Resources:
+
+  PublicSG:
+    Type: AWS::EC2::SecurityGroup
+
+    Properties:
+
+      GroupDescription: Public EC2 Security Group
+
+      VpcId: !Ref VpcId
+
+      SecurityGroupIngress:
+
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 112.197.82.225
+
+      Tags:
+        - Key: Name
+          Value: PublicSG
+
+  PrivateSG:
+    Type: AWS::EC2::SecurityGroup
+
+    Properties:
+
+      GroupDescription: Private EC2 Security Group
+
+      VpcId: !Ref VpcId
+
+      SecurityGroupIngress:
+
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+
+          SourceSecurityGroupId:
+            !Ref PublicSG
+
+      Tags:
+        - Key: Name
+          Value: PrivateSG
+
+Outputs:
+
+  PublicSGId:
+    Value: !Ref PublicSG
+
+  PrivateSGId:
+    Value: !Ref PrivateSG
