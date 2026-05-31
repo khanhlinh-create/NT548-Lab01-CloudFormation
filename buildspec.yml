@@ -11,9 +11,9 @@ phases:
   build:
     commands:
       - echo "Running cfn-lint..."
-      - cfn-lint network/*.yaml
-      - cfn-lint security/*.yaml
-      - cfn-lint compute/*.yaml
+      - cfn-lint --non-zero-exit-code error network/*.yaml
+      - cfn-lint --non-zero-exit-code error security/*.yaml
+      - cfn-lint --non-zero-exit-code error compute/*.yaml
 
 artifacts:
   files:
