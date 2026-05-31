@@ -1,0 +1,78 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+
+  PublicSubnetId:
+    Type: String
+
+  PrivateSubnetId:
+    Type: String
+
+  PublicSGId:
+    Type: String
+
+  PrivateSGId:
+    Type: String
+
+Resources:
+
+  PublicEC2:
+    Type: AWS::EC2::Instance
+
+    Properties:
+
+      ImageId: ami-0150847fe1b89b004
+
+      InstanceType: t3.micro
+
+      KeyName: nt548-lab1-key
+
+      NetworkInterfaces:
+
+        - AssociatePublicIpAddress: true
+          DeviceIndex: "0"
+          SubnetId: !Ref PublicSubnetId
+
+          GroupSet:
+            - !Ref PublicSGId
+
+      Tags:
+        - Key: Name
+          Value: Public-EC2
+
+  PrivateEC2:
+    Type: AWS::EC2::Instance
+
+    Properties:
+
+      ImageId: ami-0150847fe1b89b004
+
+      InstanceType: t3.micro
+
+      KeyName: nt548-lab1-key
+
+      SubnetId: !Ref PrivateSubnetId
+
+      SecurityGroupIds:
+        - !Ref PrivateSGId
+
+      Tags:
+        - Key: Name
+          Value: Private-EC2
+
+Outputs:
+
+  PublicEC2Id:
+    Value: !Ref PublicEC2
+
+  PrivateEC2Id:
+    Value: !Ref PrivateEC2
+
+  PublicEC2PublicIP:
+    Value: !GetAtt PublicEC2.PublicIp
+
+  PublicEC2PrivateIP:
+    Value: !GetAtt PublicEC2.PrivateIp
+
+  PrivateEC2PrivateIP:
+    Value: !GetAtt PrivateEC2.PrivateIp
