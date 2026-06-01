@@ -1,0 +1,8 @@
+project:
+  name: lab2-cloudformation
+  regions:
+    - ap-southeast-2
+
+tests:
+  validate-vpc:
+    template: network/vpc.yaml
