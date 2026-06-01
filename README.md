@@ -131,3 +131,5 @@ Sau khi hoàn thành bài lab:
 * Delete lab1
 
 để tránh phát sinh chi phí AWS.
+
+Lab 2 - CodePipeline Auto Trigger Test
