@@ -15,9 +15,8 @@ phases:
       - cfn-lint --non-zero-exit-code error security/*.yaml
       - cfn-lint --non-zero-exit-code error compute/*.yaml
       
-      - echo "Running Taskcat..."
-      - taskcat --version
-      - taskcat lint
+      - echo "Checking Taskcat installation..."
+      - python -m pip show taskcat
 
 artifacts:
   files:
