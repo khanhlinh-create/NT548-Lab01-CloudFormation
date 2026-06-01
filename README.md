@@ -2,7 +2,7 @@
 
 ## Giới thiệu
 
-Repository này chứa mã nguồn thực hiện Lab 1 và Lab 2 môn NT548 - Điện toán đám mây.
+Repository này chứa mã nguồn thực hiện Lab 1 và Lab 2 môn NT548 - Công nghệ DevOps và ứng dụng.
 
 Mục tiêu của bài lab:
 
